@@ -1,2 +1,2 @@
 # front-end-development-
-Assignments from the university + my own projects
+Assignments for the university + my own projects
