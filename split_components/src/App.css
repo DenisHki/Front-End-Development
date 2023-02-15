@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  background-color: rgb(58, 55, 61);
+  padding: 10px;
+  margin: auto;
+}
+
+table {
+  margin: auto;
+}
