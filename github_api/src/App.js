@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
-  const [reposits, setReposit] = React.useState([]);
-  const [isReady, setReady] = React.useState(false);
+  const [reposits, setReposit] = useState([]);
+  const [isReady, setReady] = useState(false);
   
-  React.useEffect(() => {
+  useEffect(() => {
     fetch('https://api.github.com/search/repositories?q=react') 
     .then(response => response.json())
     .then(responseData => {
