@@ -21,7 +21,10 @@ function Todolist() {
   // Define the columns of the table in the AgGridReact component:
   const columns = [
     {field:'description', headerName: 'Description', sortable:true, filter: true, floatingFilter: true},
-    {field:'date', headerName: 'Date', sortable:true, filter: true, floatingFilter: true},
+    {field:'date', headerName: 'Date', sortable:true, filter: true, floatingFilter: true, valueGetter: (params) => {
+      // Convert the date object to string in the "DD.MM.YY" format
+      return params.data.date ? params.data.date.format("DD.MM.YY") : "";
+    }},
     {field:'priority', headerName: 'Priority', sortable:true, filter: true, floatingFilter: true,
      cellStyle: params => params.value.toLowerCase() === "high" ? {color: 'red'} : {color: 'black'}
     },
@@ -52,8 +55,8 @@ function Todolist() {
   }
 
   // Change the date value
-  const changeDate = (date) => {
-    setTodo({ ...todo, date: date});
+  const changeDate = (newDate) => {
+    setTodo({ ...todo, date: newDate});
   }
 
   return (
@@ -71,6 +74,7 @@ function Todolist() {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
             label="Date"
+            format="DD.MM.YY"
             value={todo.date}
             onChange={changeDate}
             renderInput={(params) => <TextField {...params} />}
